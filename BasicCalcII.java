@@ -20,6 +20,7 @@ Output: 5
 
 class Solution {
     public int calculate(String s) {
+      //Tc: O(n) and Sc: O(n)
         if(s == null || s.isEmpty()) return 0;
         int num = 0;
         char sign = '+';
