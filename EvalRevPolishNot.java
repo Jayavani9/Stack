@@ -32,3 +32,32 @@ Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
 = (0 + 17) + 5
 = 17 + 5
 = 22
+
+class Solution {
+    public int evalRPN(String[] tokens) {
+      // Tc: O(n) and Sc: O(n)
+        Stack<Integer> st = new Stack<>();
+        for(String i:tokens)
+        {
+            if(i.equals("+") || i.equals("-") || i.equals("*") || i.equals("/"))
+            {
+                int b = st.pop();
+                int a = st.pop();
+                int ans = cal(a,b,i.charAt(0));
+                st.push(ans);
+            }
+            else
+            {
+                st.push(Integer.parseInt(i));
+            }
+        }
+        return st.pop();
+    }
+    private int cal(int a, int b, char op)
+    {
+        if(op == '+') return a+b;
+        else if(op == '-') return a - b;
+        else if (op == '*') return a*b;
+        else return a/b;
+    }
+}
