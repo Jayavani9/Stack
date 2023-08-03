@@ -17,3 +17,31 @@ Output: true
 Example 3:
 Input: s = "(]"
 Output: false
+
+
+class Solution {
+    public boolean isValid(String s) {
+      // Tc: O(n) and Sc: O(n)
+       HashMap<Character, Character> map = new HashMap<>();
+        Stack<Character> st = new Stack<>();
+        map.put(')', '(');
+        map.put('}', '{');
+        map.put(']', '[');
+        
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '{' || c == '[') {
+                st.push(c);
+            } else {
+
+                if (st.isEmpty() || st.peek() != map.get(c)) {
+                    return false;
+                }
+                st.pop(); 
+            }
+        }
+
+        return st.isEmpty();
+        
+    }
+}
