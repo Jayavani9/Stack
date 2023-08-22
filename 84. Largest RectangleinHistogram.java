@@ -10,3 +10,20 @@ The largest rectangle is shown in the red area, which has an area = 10 units.
 
 Input: heights = [2,4]
 Output: 4
+
+Tc: O(n^2) ; Time Limit Exceeded Solution
+if(heights == null || heights.length == 0) return 0;
+        int area = 0;
+        for(int i = 0;i < heights.length;i++)
+        {
+            int min = heights[i];
+            for(int j = i; j < heights.length; j++)
+            {
+
+                min = Math.min(min, heights[j]);
+                area = Math.max(area, min*(j-i+1));
+
+
+            }
+        }
+        return area;
